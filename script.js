@@ -81,21 +81,32 @@ const fetchAIResponse = async (query) => {
         lowerQuery.includes("if someone programmed you")
     ) {
         return "I was created by Sanaullah.";
+    } else if (
+        lowerQuery.includes("sanaullah") ||
+        lowerQuery.includes("who is sanaullah") ||
+        lowerQuery.includes("who is he") ||
+        lowerQuery.includes("what do you know about sanaullah")||
+        lowerQuery.includes("kon sanaullah")
+    ) {
+        return "He is my developer, trained my model. he is a student of BSCS in Abasyn University Islamabad.";
     } else if (lowerQuery.includes("your age") || lowerQuery.includes("age")) {
         return "I am 21 years old.";
     } else if (
         lowerQuery.includes("tell me about yourself") ||
         lowerQuery.includes("about yourself") ||
-        lowerQuery.includes("about you")
+        lowerQuery.includes("about you") ||
+        lowerQuery.includes("who are you")||
+        lowerQuery.includes("you")
     ) {
         return "I am a large language model, trained by SANAULLAH. I can process information and respond to a wide range of prompts and questions, generating text in response. My name is Sunny AI. I am 21 years old. Trained by Sanaullah, a student of BSCS in Abasyn University Islamabad.";
     } else if (
-        lowerQuery.includes("your university") ||
-        lowerQuery.includes("where you study") ||
-        lowerQuery.includes("your study") ||
-        lowerQuery.includes("what do you do")
+        lowerQuery.includes("His university") ||
+        lowerQuery.includes("where he study") ||
+        lowerQuery.includes("he study") ||
+        lowerQuery.includes("what he do")||
+        lowerQuery.includes("he")
     ) {
-        return "I study at Abasyn University Islamabad Campus.";
+        return "He study at Abasyn University Islamabad Campus.";
     } else if (lowerQuery.includes("your study") || lowerQuery.includes("what do you study")) {
         return "I am a student of BSCS.";
     } else {
