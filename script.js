@@ -19,65 +19,68 @@ const fetchAIResponse = async (query) => {
         return "My name is Sanaullah AI.";
     } 
      else if (
-    lowerQuery.includes("you are made by") ||
-    lowerQuery.includes("you are created by") ||
-    lowerQuery.includes("your creation") ||
-    lowerQuery.includes("you are built by") ||
-    lowerQuery.includes("you are developed by") ||
-    lowerQuery.includes("you are designed by") ||
-    lowerQuery.includes("you are programmed by") ||
-    lowerQuery.includes("who created you") ||
-    lowerQuery.includes("who made you") ||
-    lowerQuery.includes("who built you") ||
-    lowerQuery.includes("who developed you") ||
-    lowerQuery.includes("who designed you") ||
-    lowerQuery.includes("who programmed you") ||
-    lowerQuery.includes("who is your creator") ||
-    lowerQuery.includes("who is your maker") ||
-    lowerQuery.includes("who is your developer") ||
-    lowerQuery.includes("who is your designer") ||
-    lowerQuery.includes("who is your programmer") ||
-    lowerQuery.includes("who is responsible for creating you") ||
-    lowerQuery.includes("who is behind your creation") ||
-    lowerQuery.includes("who is the person who made you") ||
-    lowerQuery.includes("who is the one who built you") ||
-    lowerQuery.includes("who is the one who developed you") ||
-    lowerQuery.includes("who is the one who designed you") ||
-    lowerQuery.includes("who is the one who programmed you") ||
-    lowerQuery.includes("your maker") ||
-    lowerQuery.includes("your creator") ||
-    lowerQuery.includes("your developer") ||
-    lowerQuery.includes("your designer") ||
-    lowerQuery.includes("your programmer") ||
-    lowerQuery.includes("your builder") ||
-    lowerQuery.includes("you are the creation of") ||
-    lowerQuery.includes("you are the work of") ||
-    lowerQuery.includes("you are the product of") ||
-    lowerQuery.includes("where do you come from") ||
-    lowerQuery.includes("who brought you into existence") ||
-    lowerQuery.includes("who is responsible for your existence") ||
-    lowerQuery.includes("who is the brain behind you") ||
-    lowerQuery.includes("who is the mastermind behind you") ||
-    lowerQuery.includes("who is the genius behind you") ||
-    lowerQuery.includes("who is the architect behind you") ||
-    lowerQuery.includes("who is the engineer behind you") ||
-    lowerQuery.includes("who made this bot") ||
-    lowerQuery.includes("who created this bot") ||
-    lowerQuery.includes("who built this bot") ||
-    lowerQuery.includes("who developed this bot") ||
-    lowerQuery.includes("who designed this bot") ||
-    lowerQuery.includes("who programmed this bot") ||
-    lowerQuery.includes("who is the creator of this bot") ||
-    lowerQuery.includes("who is the maker of this bot") ||
-    lowerQuery.includes("who is the developer of this bot") ||
-    lowerQuery.includes("who is the designer of this bot") ||
-    lowerQuery.includes("who is the programmer of this bot") ||
-    lowerQuery.includes("if you were created by someone") ||
-    lowerQuery.includes("if someone made you") ||
-    lowerQuery.includes("if someone built you") ||
-    lowerQuery.includes("if someone developed you") ||
-    lowerQuery.includes("if someone designed you") ||
-    lowerQuery.includes("if someone programmed you"
+        lowerQuery.includes("you are made by") ||
+        lowerQuery.includes("you are created by") ||
+        lowerQuery.includes("your creation") ||
+        lowerQuery.includes("you are built by") ||
+        lowerQuery.includes("you are developed by") ||
+        lowerQuery.includes("you are designed by") ||
+        lowerQuery.includes("you are programmed by") ||
+        lowerQuery.includes("who created you") ||
+        lowerQuery.includes("who created you") ||
+        lowerQuery.includes("who made you") ||
+        lowerQuery.includes("who built you") ||
+        lowerQuery.includes("who developed you") ||
+        lowerQuery.includes("who designed you") ||
+        lowerQuery.includes("who programmed you") ||
+        lowerQuery.includes("who is your creator") ||
+        lowerQuery.includes("who is your maker") ||
+        lowerQuery.includes("who is your developer") ||
+        lowerQuery.includes("who is your designer") ||
+        lowerQuery.includes("who is your programmer") ||
+        lowerQuery.includes("who is responsible for creating you") ||
+        lowerQuery.includes("who is behind your creation") ||
+        lowerQuery.includes("who is the person who made you") ||
+        lowerQuery.includes("who is the one who built you") ||
+        lowerQuery.includes("who is the one who developed you") ||
+        lowerQuery.includes("who is the one who designed you") ||
+        lowerQuery.includes("who is the one who programmed you") ||
+        lowerQuery.includes("your maker") ||
+        lowerQuery.includes("your make by") ||
+        lowerQuery.includes("your owner") ||
+        lowerQuery.includes("your creator") ||
+        lowerQuery.includes("your developer") ||
+        lowerQuery.includes("your designer") ||
+        lowerQuery.includes("your programmer") ||
+        lowerQuery.includes("your builder") ||
+        lowerQuery.includes("you are the creation of") ||
+        lowerQuery.includes("you are the work of") ||
+        lowerQuery.includes("you are the product of") ||
+        lowerQuery.includes("where do you come from") ||
+        lowerQuery.includes("who brought you into existence") ||
+        lowerQuery.includes("who is responsible for your existence") ||
+        lowerQuery.includes("who is the brain behind you") ||
+        lowerQuery.includes("who is the mastermind behind you") ||
+        lowerQuery.includes("who is the genius behind you") ||
+        lowerQuery.includes("who is the architect behind you") ||
+        lowerQuery.includes("who is the engineer behind you") ||
+        lowerQuery.includes("who made this bot") ||
+        lowerQuery.includes("who created this bot") ||
+        lowerQuery.includes("who built this bot") ||
+        lowerQuery.includes("who developed this bot") ||
+        lowerQuery.includes("who designed this bot") ||
+        lowerQuery.includes("who programmed this bot") ||
+        lowerQuery.includes("who is the creator of this bot") ||
+        lowerQuery.includes("who is the maker of this bot") ||
+        lowerQuery.includes("who is the developer of this bot") ||
+        lowerQuery.includes("who is the designer of this bot") ||
+        lowerQuery.includes("who is the programmer of this bot") ||
+        lowerQuery.includes("if you were created by someone") ||
+        lowerQuery.includes("if someone made you") ||
+        lowerQuery.includes("if someone built you") ||
+        lowerQuery.includes("if someone developed you") ||
+        lowerQuery.includes("if someone designed you") ||
+        lowerQuery.includes("if someone programmed you"
     ) {
     return "I was created by Sanaullah.";
     }
