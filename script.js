@@ -230,12 +230,62 @@ function appendMessage(message, sender) {
     chatbotBody.scrollTop = chatbotBody.scrollHeight;
 }
 
+// Function to format text as bullet points
 function formatAsBulletPoints(text) {
-    // Split the text into sentences or key points
-    const points = text.split('. ').filter(point => point.trim() !== '');
-
-    // Format each point as a bullet point
-    const bulletPoints = points.map(point => `• ${point.trim()}`).join('\n');
-
-    return bulletPoints;
+    // Split the text into logical points (e.g., sentences or phrases)
+    const points = text.split(/(?:\n|\. |; )/).filter(point => point.trim() !== '');
+    // Add bullet symbols and join with newlines
+    return points.map(point => `• ${point.trim()}`).join('\n');
 }
+
+// Custom AI Response Logic
+const fetchAIResponse = async (query) => {
+    const lowerQuery = query.toLowerCase();
+    let botResponse;
+    let isBulletRequest = false;
+
+    // Check if the user explicitly asks for bullet points
+    if (
+        lowerQuery.includes("bullet points") ||
+        lowerQuery.includes("as a list") ||
+        lowerQuery.includes("in points") ||
+        lowerQuery.includes("list form")
+    ) {
+        isBulletRequest = true;
+    }
+
+    // Predefined responses for personal questions
+    if (lowerQuery.includes("your name") || lowerQuery.includes("name")) {
+        botResponse = "My name is Sanaullah AI.";
+    } else if (
+        lowerQuery.includes("you are made by") ||
+        lowerQuery.includes("you are created by") ||
+        lowerQuery.includes("your creation")
+    ) {
+        botResponse = "I was created by Sanaullah.";
+    } else if (lowerQuery.includes("your age") || lowerQuery.includes("age")) {
+        botResponse = "I am 21 years old.";
+    } 
+    // ... (other predefined conditions)
+    else {
+        // Fallback to Gemini API
+        try {
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ contents: [{ role: 'user', parts: [{ text: query }] }] }),
+            });
+            const data = await response.json();
+            botResponse = data.candidates[0].content.parts[0].text;
+        } catch (error) {
+            botResponse = "Sorry, I couldn't fetch a response. Please try again later.";
+        }
+    }
+
+    // Format as bullet points if requested
+    if (isBulletRequest) {
+        botResponse = formatAsBulletPoints(botResponse);
+    }
+
+    return botResponse;
+};
