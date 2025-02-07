@@ -15,7 +15,7 @@ const fetchAIResponse = async (query) => {
     const lowerQuery = query.toLowerCase();
 
     // Predefined responses for personal questions
-    if (lowerQuery.includes("your name")) {
+    if (lowerQuery.includes("your name") || lowerQuery.includes("name")) {
         return "My name is Sanaullah AI.";
     } else if (
         lowerQuery.includes("you are made by") ||
@@ -103,15 +103,15 @@ const fetchAIResponse = async (query) => {
         lowerQuery.includes("tell me about yourself") ||
         lowerQuery.includes("about yourself") ||
         lowerQuery.includes("about you") ||
-        lowerQuery.includes("who are you")
+        lowerQuery.includes("who are you") ||
+        lowerQuery.includes("you")
     ) {
         return "I am a large language model, trained by SANAULLAH. I can process information and respond to a wide range of prompts and questions, generating text in response. My nick name is Sunny. Trained by Sanaullah, a student of BSCS in Abasyn University Islamabad.";
     } else if (
         lowerQuery.includes("his university") ||
         lowerQuery.includes("where he study") ||
         lowerQuery.includes("he study") ||
-        lowerQuery.includes("what he do") 
-        
+        lowerQuery.includes("what he do")
     ) {
         return "He studies at Abasyn University Islamabad Campus.";
     } else if (lowerQuery.includes("your study") || lowerQuery.includes("what do you study")) {
@@ -179,18 +179,15 @@ chatInput.addEventListener('keypress', (e) => {
     }
 });
 
-// Function to remove Markdown formatting
 function removeMarkdown(text) {
-    // Remove double asterisks (**) and other Markdown syntax
-    return text.replace(/\*\*/g, '').replace(/\*/g, '').replace(/_/g, '');
+    return text.replace(/\*\*/g, '');
 }
-
 // Function to send a message
 async function sendMessage() {
     const userMessage = chatInput.value.trim();
     if (userMessage) {
-        appendMessage(userMessage, 'user'); // Display user's message
-        chatInput.value = ''; // Clear the input field
+        appendMessage(userMessage, 'user');
+        chatInput.value = '';
 
         // Show typing indicator
         const typingIndicator = document.createElement('div');
@@ -204,17 +201,14 @@ async function sendMessage() {
         chatbotBody.scrollTop = chatbotBody.scrollHeight;
 
         try {
-            const botResponse = await fetchAIResponse(userMessage); // Fetch bot's response
+            const botResponse = await fetchAIResponse(userMessage);
             // Remove typing indicator
             chatbotBody.removeChild(typingIndicator);
-
-            // Remove Markdown formatting from the bot's response
-            const plainTextResponse = removeMarkdown(botResponse);
-            appendMessage(plainTextResponse, 'bot'); // Display bot's response
+            appendMessage(botResponse, 'bot');
         } catch (error) {
             // Remove typing indicator
             chatbotBody.removeChild(typingIndicator);
-            appendMessage('Error: Unable to fetch response.', 'bot'); // Display error message
+            appendMessage('Error: Unable to fetch response.', 'bot');
             console.error('Error:', error);
         }
     }
@@ -227,64 +221,4 @@ function appendMessage(message, sender) {
     messageElement.textContent = message;
     chatbotBody.appendChild(messageElement);
     chatbotBody.scrollTop = chatbotBody.scrollHeight;
-}
-
-// Function to format text as bullet points
-function formatAsBulletPoints(text) {
-    // Split the text into logical points (e.g., sentences or phrases)
-    const points = text.split(/(?:\n|\. |; )/).filter(point => point.trim() !== '');
-    // Add bullet symbols and join with newlines
-    return points.map(point => `• ${point.trim()}`).join('\n');
-}
-
-// Custom AI Response Logic
-const fetchAIResponse = async (query) => {
-    const lowerQuery = query.toLowerCase();
-    let botResponse;
-    let isBulletRequest = false;
-
-    // Check if the user explicitly asks for bullet points
-    if (
-        lowerQuery.includes("bullet points") ||
-        lowerQuery.includes("as a list") ||
-        lowerQuery.includes("in points") ||
-        lowerQuery.includes("list form")
-    ) {
-        isBulletRequest = true;
-    }
-
-    // Predefined responses for personal questions
-    if (lowerQuery.includes("your name") || lowerQuery.includes("name")) {
-        botResponse = "My name is Sanaullah AI.";
-    } else if (
-        lowerQuery.includes("you are made by") ||
-        lowerQuery.includes("you are created by") ||
-        lowerQuery.includes("your creation")
-    ) {
-        botResponse = "I was created by Sanaullah.";
-    } else if (lowerQuery.includes("your age") || lowerQuery.includes("age")) {
-        botResponse = "I am 21 years old.";
-    } 
-    // ... (other predefined conditions)
-    else {
-        // Fallback to Gemini API
-        try {
-            const response = await fetch(apiUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ contents: [{ role: 'user', parts: [{ text: query }] }] }),
-            });
-            const data = await response.json();
-            botResponse = data.candidates[0].content.parts[0].text;
-        } catch (error) {
-            botResponse = "Sorry, I couldn't fetch a response. Please try again later.";
-        }
-    }
-
-    // Format as bullet points if requested
-    if (isBulletRequest) {
-        botResponse = formatAsBulletPoints(botResponse);
-    }
-
-    return botResponse;
-};
+                            }
