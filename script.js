@@ -229,3 +229,13 @@ function appendMessage(message, sender) {
     chatbotBody.appendChild(messageElement);
     chatbotBody.scrollTop = chatbotBody.scrollHeight;
 }
+
+function formatAsBulletPoints(text) {
+    // Split the text into sentences or key points
+    const points = text.split('. ').filter(point => point.trim() !== '');
+
+    // Format each point as a bullet point
+    const bulletPoints = points.map(point => `• ${point.trim()}`).join('\n');
+
+    return bulletPoints;
+}
