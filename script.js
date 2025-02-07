@@ -180,15 +180,17 @@ chatInput.addEventListener('keypress', (e) => {
     }
 });
 
+// Function to remove Markdown formatting
 function removeMarkdown(text) {
-    return text.replace(/\*\*/g, '');
+    return text.replace(/\*\*/g, ''); // Removes double asterisks (**)
 }
+
 // Function to send a message
 async function sendMessage() {
     const userMessage = chatInput.value.trim();
     if (userMessage) {
-        appendMessage(userMessage, 'user');
-        chatInput.value = '';
+        appendMessage(userMessage, 'user'); // Display user's message
+        chatInput.value = ''; // Clear the input field
 
         // Show typing indicator
         const typingIndicator = document.createElement('div');
@@ -202,14 +204,17 @@ async function sendMessage() {
         chatbotBody.scrollTop = chatbotBody.scrollHeight;
 
         try {
-            const botResponse = await fetchAIResponse(userMessage);
+            const botResponse = await fetchAIResponse(userMessage); // Fetch bot's response
             // Remove typing indicator
             chatbotBody.removeChild(typingIndicator);
-            appendMessage(botResponse, 'bot');
+
+            // Remove Markdown formatting from the bot's response
+            const plainTextResponse = removeMarkdown(botResponse);
+            appendMessage(plainTextResponse, 'bot'); // Display bot's response
         } catch (error) {
             // Remove typing indicator
             chatbotBody.removeChild(typingIndicator);
-            appendMessage('Error: Unable to fetch response.', 'bot');
+            appendMessage('Error: Unable to fetch response.', 'bot'); // Display error message
             console.error('Error:', error);
         }
     }
