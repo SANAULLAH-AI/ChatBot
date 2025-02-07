@@ -89,7 +89,15 @@ const fetchAIResponse = async (query) => {
         lowerQuery.includes("kon sanaullah")
     ) {
         return "He is my developer, trained my model. He is a student of BSCS in Abasyn University Islamabad.";
-    } else if (lowerQuery.includes("your age") || lowerQuery.includes("age")) {
+    } else if (
+        lowerQuery.includes("how are you") || 
+        lowerQuery.includes("kasy ho")
+    ) {
+        return "I am Fine, fit as fiddle. How about you?";
+    } else if (
+        lowerQuery.includes("your age") || 
+        lowerQuery.includes("age")
+    ) {
         return "I am 21 years old.";
     } else if (
         lowerQuery.includes("tell me about yourself") ||
@@ -98,7 +106,7 @@ const fetchAIResponse = async (query) => {
         lowerQuery.includes("who are you") ||
         lowerQuery.includes("you")
     ) {
-        return "I am a large language model, trained by SANAULLAH. I can process information and respond to a wide range of prompts and questions, generating text in response. My name is Sunny AI. I am 21 years old. Trained by Sanaullah, a student of BSCS in Abasyn University Islamabad.";
+        return "I am a large language model, trained by SANAULLAH. I can process information and respond to a wide range of prompts and questions, generating text in response. My nick name is Sunny. Trained by Sanaullah, a student of BSCS in Abasyn University Islamabad.";
     } else if (
         lowerQuery.includes("his university") ||
         lowerQuery.includes("where he study") ||
@@ -172,6 +180,9 @@ chatInput.addEventListener('keypress', (e) => {
     }
 });
 
+function removeMarkdown(text) {
+    return text.replace(/\*\*/g, '');
+}
 // Function to send a message
 async function sendMessage() {
     const userMessage = chatInput.value.trim();
