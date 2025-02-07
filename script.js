@@ -15,7 +15,7 @@ const fetchAIResponse = async (query) => {
     const lowerQuery = query.toLowerCase();
 
     // Predefined responses for personal questions
-    if (lowerQuery.includes("your name") || lowerQuery.includes("name")) {
+    if (lowerQuery.includes("your name")) {
         return "My name is Sanaullah AI.";
     } else if (
         lowerQuery.includes("you are made by") ||
