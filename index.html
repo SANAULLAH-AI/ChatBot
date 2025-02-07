@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="chatbot-container">
+        <div class="chatbot-header">
+            <h2>AI Chatbot</h2>
+            <div class="chatbot-controls">
+                <button id="new-chat-btn" title="New Chat">🔄</button>
+                <button id="remove-chat-btn" title="Clear Chat">🗑️</button>
+                <button id="dark-mode-toggle" title="Toggle Dark Mode">🌙</button>
+            </div>
+        </div>
+        <div class="chatbot-body" id="chatbot-body">
+            <!-- Chat messages will be appended here -->
+        </div>
+        <div class="chatbot-footer">
+            <input type="text" id="chat-input" placeholder="Type a message...">
+            <button id="send-btn">Send</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
