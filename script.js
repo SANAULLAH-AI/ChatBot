@@ -85,28 +85,28 @@ const fetchAIResponse = async (query) => {
         lowerQuery.includes("sanaullah") ||
         lowerQuery.includes("who is sanaullah") ||
         lowerQuery.includes("who is he") ||
-        lowerQuery.includes("what do you know about sanaullah")||
+        lowerQuery.includes("what do you know about sanaullah") ||
         lowerQuery.includes("kon sanaullah")
     ) {
-        return "He is my developer, trained my model. he is a student of BSCS in Abasyn University Islamabad.";
+        return "He is my developer, trained my model. He is a student of BSCS in Abasyn University Islamabad.";
     } else if (lowerQuery.includes("your age") || lowerQuery.includes("age")) {
         return "I am 21 years old.";
     } else if (
         lowerQuery.includes("tell me about yourself") ||
         lowerQuery.includes("about yourself") ||
         lowerQuery.includes("about you") ||
-        lowerQuery.includes("who are you")||
+        lowerQuery.includes("who are you") ||
         lowerQuery.includes("you")
     ) {
         return "I am a large language model, trained by SANAULLAH. I can process information and respond to a wide range of prompts and questions, generating text in response. My name is Sunny AI. I am 21 years old. Trained by Sanaullah, a student of BSCS in Abasyn University Islamabad.";
     } else if (
-        lowerQuery.includes("His university") ||
+        lowerQuery.includes("his university") ||
         lowerQuery.includes("where he study") ||
         lowerQuery.includes("he study") ||
-        lowerQuery.includes("what he do")||
+        lowerQuery.includes("what he do") ||
         lowerQuery.includes("he")
     ) {
-        return "He study at Abasyn University Islamabad Campus.";
+        return "He studies at Abasyn University Islamabad Campus.";
     } else if (lowerQuery.includes("your study") || lowerQuery.includes("what do you study")) {
         return "I am a student of BSCS.";
     } else {
@@ -179,10 +179,25 @@ async function sendMessage() {
         appendMessage(userMessage, 'user');
         chatInput.value = '';
 
+        // Show typing indicator
+        const typingIndicator = document.createElement('div');
+        typingIndicator.classList.add('typing-indicator');
+        typingIndicator.innerHTML = `
+            <span></span>
+            <span></span>
+            <span></span>
+        `;
+        chatbotBody.appendChild(typingIndicator);
+        chatbotBody.scrollTop = chatbotBody.scrollHeight;
+
         try {
             const botResponse = await fetchAIResponse(userMessage);
+            // Remove typing indicator
+            chatbotBody.removeChild(typingIndicator);
             appendMessage(botResponse, 'bot');
         } catch (error) {
+            // Remove typing indicator
+            chatbotBody.removeChild(typingIndicator);
             appendMessage('Error: Unable to fetch response.', 'bot');
             console.error('Error:', error);
         }
