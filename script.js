@@ -15,7 +15,7 @@ const fetchAIResponse = async (query) => {
     const lowerQuery = query.toLowerCase();
 
     // Predefined responses for personal questions
-    if (lowerQuery.includes("your name") || lowerQuery.includes("name")) {
+    if (lowerQuery.includes("your name")) {
         return "My name is Sanaullah AI.";
     } else if (
         lowerQuery.includes("you are made by") ||
@@ -103,16 +103,15 @@ const fetchAIResponse = async (query) => {
         lowerQuery.includes("tell me about yourself") ||
         lowerQuery.includes("about yourself") ||
         lowerQuery.includes("about you") ||
-        lowerQuery.includes("who are you") ||
-        lowerQuery.includes("you")
+        lowerQuery.includes("who are you")
     ) {
         return "I am a large language model, trained by SANAULLAH. I can process information and respond to a wide range of prompts and questions, generating text in response. My nick name is Sunny. Trained by Sanaullah, a student of BSCS in Abasyn University Islamabad.";
     } else if (
         lowerQuery.includes("his university") ||
         lowerQuery.includes("where he study") ||
         lowerQuery.includes("he study") ||
-        lowerQuery.includes("what he do") ||
-        lowerQuery.includes("he")
+        lowerQuery.includes("what he do") 
+        
     ) {
         return "He studies at Abasyn University Islamabad Campus.";
     } else if (lowerQuery.includes("your study") || lowerQuery.includes("what do you study")) {
