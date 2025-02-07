@@ -17,8 +17,7 @@ const fetchAIResponse = async (query) => {
     // Predefined responses for personal questions
     if (lowerQuery.includes("your name") || lowerQuery.includes("name")) {
         return "My name is Sanaullah AI.";
-    } 
-     else if (
+    } else if (
         lowerQuery.includes("you are made by") ||
         lowerQuery.includes("you are created by") ||
         lowerQuery.includes("your creation") ||
@@ -26,7 +25,6 @@ const fetchAIResponse = async (query) => {
         lowerQuery.includes("you are developed by") ||
         lowerQuery.includes("you are designed by") ||
         lowerQuery.includes("you are programmed by") ||
-        lowerQuery.includes("who created you") ||
         lowerQuery.includes("who created you") ||
         lowerQuery.includes("who made you") ||
         lowerQuery.includes("who built you") ||
@@ -80,11 +78,10 @@ const fetchAIResponse = async (query) => {
         lowerQuery.includes("if someone built you") ||
         lowerQuery.includes("if someone developed you") ||
         lowerQuery.includes("if someone designed you") ||
-        lowerQuery.includes("if someone programmed you"
+        lowerQuery.includes("if someone programmed you")
     ) {
-    return "I was created by Sanaullah.";
-    }
-      else if (lowerQuery.includes("your age") || lowerQuery.includes("age")) {
+        return "I was created by Sanaullah.";
+    } else if (lowerQuery.includes("your age") || lowerQuery.includes("age")) {
         return "I am 21 years old.";
     } else if (
         lowerQuery.includes("tell me about yourself") ||
