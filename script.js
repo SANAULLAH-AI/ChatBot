@@ -182,7 +182,8 @@ chatInput.addEventListener('keypress', (e) => {
 
 // Function to remove Markdown formatting
 function removeMarkdown(text) {
-    return text.replace(/\*\*/g, ''); // Removes double asterisks (**)
+    // Remove double asterisks (**) and other Markdown syntax
+    return text.replace(/\*\*/g, '').replace(/\*/g, '').replace(/_/g, '');
 }
 
 // Function to send a message
