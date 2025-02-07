@@ -13,18 +13,29 @@ const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1
 // Custom AI Response Logic
 const fetchAIResponse = async (query) => {
     const lowerQuery = query.toLowerCase();
+
+    // Predefined responses for personal questions
     if (lowerQuery.includes("your name") || lowerQuery.includes("name")) {
         return "My name is Sanaullah AI.";
     } else if (lowerQuery.includes("your age") || lowerQuery.includes("age")) {
         return "I am 21 years old.";
-    } else if (lowerQuery.includes("tell me about yourself") || lowerQuery.includes("about yourself") || lowerQuery.includes("about you")) {
+    } else if (
+        lowerQuery.includes("tell me about yourself") ||
+        lowerQuery.includes("about yourself") ||
+        lowerQuery.includes("about you")
+    ) {
         return "I am a large language model, trained by SANAULLAH. I can process information and respond to a wide range of prompts and questions, generating text in response. My name is Sunny AI. I am 21 years old. Trained by Sanaullah, a student of BSCS in Abasyn University Islamabad.";
-    } else if (lowerQuery.includes("your university") || lowerQuery.includes("where you study") || lowerQuery.includes("your study") || lowerQuery.includes("what do you do")) {
+    } else if (
+        lowerQuery.includes("your university") ||
+        lowerQuery.includes("where you study") ||
+        lowerQuery.includes("your study") ||
+        lowerQuery.includes("what do you do")
+    ) {
         return "I study at Abasyn University Islamabad Campus.";
     } else if (lowerQuery.includes("your study") || lowerQuery.includes("what do you study")) {
         return "I am a student of BSCS.";
     } else {
-        // Fallback to Gemini API for other queries
+        // Fallback to Gemini API for all other queries
         const requestBody = {
             contents: [
                 {
@@ -38,20 +49,25 @@ const fetchAIResponse = async (query) => {
             ],
         };
 
-        const response = await fetch(apiUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(requestBody),
-        });
+        try {
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(requestBody),
+            });
 
-        if (!response.ok) {
-            throw new Error(`API request failed with status ${response.status}`);
+            if (!response.ok) {
+                throw new Error(`API request failed with status ${response.status}`);
+            }
+
+            const data = await response.json();
+            return data.candidates[0].content.parts[0].text;
+        } catch (error) {
+            console.error('Error fetching response from Gemini API:', error);
+            return "Sorry, I couldn't fetch a response. Please try again later.";
         }
-
-        const data = await response.json();
-        return data.candidates[0].content.parts[0].text;
     }
 };
 
