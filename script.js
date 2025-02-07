@@ -7,7 +7,7 @@ const removeChatBtn = document.getElementById('remove-chat-btn');
 const darkModeToggle = document.getElementById('dark-mode-toggle');
 
 // Gemini API Configuration
-const apiKey = 'AIzaSyCUWYUKcqkkFWwzZ7tootHpfHWFZzqU_lg';
+const apiKey = 'AIzaSyCUWYUKcqkkFWwzZ7tootHpfHWFZzqU_lg'; // Replace with your valid API key
 const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
 
 // Custom AI Response Logic
