@@ -10,6 +10,11 @@ const darkModeToggle = document.getElementById('dark-mode-toggle');
 const apiKey = 'AIzaSyCUWYUKcqkkFWwzZ7tootHpfHWFZzqU_lg'; // Replace with your valid API key
 const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
 
+// Function to remove Markdown formatting
+function removeMarkdown(text) {
+    return text.replace(/\*\*/g, '').replace(/\*/g, '').replace(/_/g, '');
+}
+
 // Custom AI Response Logic
 const fetchAIResponse = async (query) => {
     const lowerQuery = query.toLowerCase();
@@ -179,9 +184,6 @@ chatInput.addEventListener('keypress', (e) => {
     }
 });
 
-function removeMarkdown(text) {
-    return text.replace(/\*\*/g, '');
-}
 // Function to send a message
 async function sendMessage() {
     const userMessage = chatInput.value.trim();
@@ -204,7 +206,10 @@ async function sendMessage() {
             const botResponse = await fetchAIResponse(userMessage);
             // Remove typing indicator
             chatbotBody.removeChild(typingIndicator);
-            appendMessage(botResponse, 'bot');
+
+            // Remove Markdown formatting from the bot's response
+            const plainTextResponse = removeMarkdown(botResponse);
+            appendMessage(plainTextResponse, 'bot');
         } catch (error) {
             // Remove typing indicator
             chatbotBody.removeChild(typingIndicator);
@@ -221,4 +226,4 @@ function appendMessage(message, sender) {
     messageElement.textContent = message;
     chatbotBody.appendChild(messageElement);
     chatbotBody.scrollTop = chatbotBody.scrollHeight;
-                            }
+}
