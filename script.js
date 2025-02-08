@@ -100,11 +100,6 @@ const fetchAIResponse = async (query) => {
     ) {
         return "I am Fine, fit as fiddle. How about you?";
     } else if (
-        lowerQuery.includes("your age") || 
-        lowerQuery.includes("age")
-    ) {
-        return "I am 21 years old.";
-    } else if (
         lowerQuery.includes("tell me about yourself") ||
         lowerQuery.includes("about yourself") ||
         lowerQuery.includes("about you") ||
