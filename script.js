@@ -12,7 +12,7 @@ const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1
 
 // Function to remove Markdown formatting
 function removeMarkdown(text) {
-    return text.replace(/\*\*/g, '').replace(/\*/g, '').replace(/_/g, '');
+    return text.replace(/\*\*/g, '\n').replace(/\*/g, '\n').replace(/_/g, '\n');
 }
 
 // Custom AI Response Logic
@@ -108,8 +108,7 @@ const fetchAIResponse = async (query) => {
         lowerQuery.includes("tell me about yourself") ||
         lowerQuery.includes("about yourself") ||
         lowerQuery.includes("about you") ||
-        lowerQuery.includes("who are you") ||
-        lowerQuery.includes("you")
+        lowerQuery.includes("who are you")
     ) {
         return "I am a large language model, trained by SANAULLAH. I can process information and respond to a wide range of prompts and questions, generating text in response. My nick name is Sunny. Trained by Sanaullah, a student of BSCS in Abasyn University Islamabad.";
     } else if (
